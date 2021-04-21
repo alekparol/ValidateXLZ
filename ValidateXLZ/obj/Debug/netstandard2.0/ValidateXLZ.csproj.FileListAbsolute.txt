@@ -1,0 +1,9 @@
+C:\Users\alekp\OneDrive\Dokumenty\GitHub\ValidateXLZ\ValidateXLZ\bin\Debug\netstandard2.0\ValidateXLZ.deps.json
+C:\Users\alekp\OneDrive\Dokumenty\GitHub\ValidateXLZ\ValidateXLZ\bin\Debug\netstandard2.0\ValidateXLZ.dll
+C:\Users\alekp\OneDrive\Dokumenty\GitHub\ValidateXLZ\ValidateXLZ\bin\Debug\netstandard2.0\ValidateXLZ.pdb
+C:\Users\alekp\OneDrive\Dokumenty\GitHub\ValidateXLZ\ValidateXLZ\obj\Debug\netstandard2.0\ValidateXLZ.csprojAssemblyReference.cache
+C:\Users\alekp\OneDrive\Dokumenty\GitHub\ValidateXLZ\ValidateXLZ\obj\Debug\netstandard2.0\ValidateXLZ.AssemblyInfoInputs.cache
+C:\Users\alekp\OneDrive\Dokumenty\GitHub\ValidateXLZ\ValidateXLZ\obj\Debug\netstandard2.0\ValidateXLZ.AssemblyInfo.cs
+C:\Users\alekp\OneDrive\Dokumenty\GitHub\ValidateXLZ\ValidateXLZ\obj\Debug\netstandard2.0\ValidateXLZ.csproj.CoreCompileInputs.cache
+C:\Users\alekp\OneDrive\Dokumenty\GitHub\ValidateXLZ\ValidateXLZ\obj\Debug\netstandard2.0\ValidateXLZ.dll
+C:\Users\alekp\OneDrive\Dokumenty\GitHub\ValidateXLZ\ValidateXLZ\obj\Debug\netstandard2.0\ValidateXLZ.pdb
