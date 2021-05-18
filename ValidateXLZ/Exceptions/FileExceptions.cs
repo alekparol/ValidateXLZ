@@ -23,5 +23,11 @@ namespace ValidateXLZ.Exceptions
             }
         }
 
+        public static void IsFilePathValid(string filePath)
+        {
+            IsFilePathEmpty(filePath);
+            IsFilePathAccessible(filePath);
+        }
+
     }
 }

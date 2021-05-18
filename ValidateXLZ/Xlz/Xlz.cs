@@ -6,6 +6,9 @@ using System.Xml;
 
 using static ValidateXLZ.Functions.FileFunctions;
 using static ValidateXLZ.Functions.XmlFunctions;
+using static ValidateXLZ.Functions.ZipArchiveFunctions;
+
+using static ValidateXLZ.Exceptions.FileExceptions;
 
 namespace ValidateXLZ.XLZ
 {
@@ -62,19 +65,9 @@ namespace ValidateXLZ.XLZ
         {
             File.Copy(xlzFilePath, newXlzFilePath);
 
-            using (ZipArchive xlzArchive = ZipFile.Open(newXlzFilePath, ZipArchiveMode.Update))
-            {
-                ZipArchiveEntry zipArchiveXlf = xlzArchive.Entries.FirstOrDefault(x => x.Name.ToLower().Contains("content.xlf"));
-                ZipArchiveEntry zipArchiveSkl = xlzArchive.Entries.FirstOrDefault(x => x.Name.ToLower().Contains("skeleton.skl"));
+            UpdateZipByFileName(xlzFilePath, "content.xlf", xlfDocument);
+            UpdateZipByFileName(xlzFilePath, "skeleton.skl", sklDocument);
 
-                if (zipArchiveXlf == null || zipArchiveSkl == null)
-                {
-                    throw new Exception(String.Format("Please check your Xlz file: {0}, content.xlf or skeleton.skl file is missing.", xlzFilePath));
-                }
-
-                SaveZipArchiveEntry(zipArchiveXlf, xlfDocument);
-                SaveZipArchiveEntry(zipArchiveSkl, sklDocument);
-            }
         }
 
         /// <summary>
@@ -104,29 +97,10 @@ namespace ValidateXLZ.XLZ
         {
             this.xlzFilePath = xlzFilePath;
 
-            if (xlzFilePath.Length == 0)
-            {
-                throw new Exception(String.Format("Provided file path is empty."));
-            }
+            IsFilePathValid(xlzFilePath);
 
-            if (!File.Exists(xlzFilePath))
-            {
-                throw new Exception(String.Format("{0} file does not exists or access is denied.", xlzFilePath));
-            }
-
-            using (ZipArchive xlzArchive = ZipFile.OpenRead(xlzFilePath))
-            {
-                ZipArchiveEntry zipArchiveXlf = xlzArchive.Entries.FirstOrDefault(x => x.Name.ToLower().Contains("content.xlf"));
-                ZipArchiveEntry zipArchiveSkl = xlzArchive.Entries.FirstOrDefault(x => x.Name.ToLower().Contains("skeleton.skl"));
-
-                if (zipArchiveXlf == null || zipArchiveSkl == null)
-                {
-                    throw new Exception(String.Format("Please check your Xlz file: {0}, content.xlf or skeleton.skl file is missing.", xlzFilePath));
-                }
-
-                xlfDocument = LoadXmlFileContent(zipArchiveXlf);
-                sklDocument = LoadXmlFileContent(zipArchiveSkl);
-            }
+            xlfDocument = OpenZipByFileName(xlzFilePath, "content.xlf");
+            sklDocument = OpenZipByFileName(xlzFilePath, "skeleton.skl");
         }
     }
 }
