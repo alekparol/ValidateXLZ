@@ -26,8 +26,48 @@ namespace ValidateXLZ.Exceptions
         {
             if (zipArchive.Entries.Count == 0)
             {
-                Logger.LogIn(string.Format("[WARNING] zip archive file {0} contains no entries. ", path));
+                Logger.LogIn(string.Format("[WARNING] zip archive file {0} contains no entries. "));
             }
+        }
+
+        public static bool DoesListContain<T>(T element)
+        {
+            if (element.Equals(default(T)))
+            {
+                Logger.LogIn(string.Format("[WARNING] the list does not contain given entry: {0}. ", element.ToString()));
+                return false;
+            }
+            return true;
+        }
+
+        public static bool DoesListContain<T>(T element, string elementName)
+        {
+            if (element.Equals(default(T)))
+            {
+                Logger.LogIn(string.Format("[WARNING] the list does not contain given entry: {0}. ", elementName));
+                return false;
+            }
+            return true;
+        }
+
+        public static bool DoesListContain<T>(List<T> list, T element)
+        {
+            if (list.Contains(element))
+            {
+                Logger.LogIn(string.Format("[WARNING] the list does not contain given entry: {0}. ", element.ToString()));
+                return false;
+            }
+            return true;
+        }
+
+        public static bool DoesListContain<T>(List<T> list, T name, string entryName)
+        {
+            if (list.Contains(name))
+            {
+                Logger.LogIn(string.Format("[WARNING] the list does not contain given entry: {0}. ", entryName));
+                return false;
+            }
+            return true;
         }
 
     }

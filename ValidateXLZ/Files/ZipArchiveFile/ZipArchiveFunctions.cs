@@ -6,11 +6,17 @@ using System.Text;
 using System.Xml;
 
 using static ValidateXLZ.Functions.FileFunctions;
+using static ValidateXLZ.Functions.Utils;
 
 namespace ValidateXLZ.Functions
 {
     public static class ZipArchiveFunctions
     {
+        #region Find Methods
+
+
+        #endregion
+
         public static void UpdateZipByFileName(string zipFilePath, string zipEntryName, XmlDocument updatedEntry)
         {
             using (ZipArchive zipArchive = ZipFile.Open(zipFilePath, ZipArchiveMode.Update))
