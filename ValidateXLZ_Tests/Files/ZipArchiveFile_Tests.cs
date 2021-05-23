@@ -63,7 +63,8 @@ namespace ValidateXLZ.Files_Tests
         }
 
         [DataTestMethod()]
-        [DataRow(@"\TestFiles\nonempty.zip", "emptytext.txt", 0, null, "jaźń")]
+        [DataRow(@"\TestFiles\nonempty.zip", "emptytext.txt", 0, null, "")]
+        [DataRow(@"\TestFiles\test1.zip", "test1.txt", 0, null, "jaźń")]
         public void ZipArchiveFile_Methods_LoadEntryAsString_Test(string path, string fileName, int expectedLogCount, string expectedLog, string textContained)
         {
             string testZipFilePath = Directory.GetCurrentDirectory() + path;
@@ -76,7 +77,6 @@ namespace ValidateXLZ.Files_Tests
             {
                 Assert.AreEqual(expectedLog, Logger.GetLogs[0]);
             }
-            Assert.AreEqual("", fileContent);
             Assert.IsTrue(fileContent.Contains(textContained));
 
             Logger.Flush();

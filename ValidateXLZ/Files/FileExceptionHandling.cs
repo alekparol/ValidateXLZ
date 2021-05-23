@@ -1,5 +1,4 @@
 ﻿using System.IO;
-
 using static ValidateXLZ.LogHandler;
 
 namespace ValidateXLZ.Files
@@ -20,6 +19,5 @@ namespace ValidateXLZ.Files
             }
             return true;
         }
-
     }
 }
