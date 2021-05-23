@@ -7,6 +7,7 @@ using System.Xml;
 
 using static ValidateXLZ.Functions.FileFunctions;
 using static ValidateXLZ.Functions.Utils;
+using static ValidateXLZ.LogHandler;
 
 namespace ValidateXLZ.Functions
 {
@@ -16,6 +17,22 @@ namespace ValidateXLZ.Functions
 
 
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="elementName"></param>
+        /// <returns></returns>
+        public static bool DoesListContain(string path, List<ZipArchiveEntry> list, string elementName)
+        {
+            if (list.FindAll(x => x.Name == elementName).Count == 0)
+            {
+                Logger.LogIn(string.Format("[WARNING] Zip archive from the path {0} does not contain an entry of a specified name: {1}. ", path, elementName));
+                return false;
+            }
+            return true;
+        }
 
         public static void UpdateZipByFileName(string zipFilePath, string zipEntryName, XmlDocument updatedEntry)
         {
